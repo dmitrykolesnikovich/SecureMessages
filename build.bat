@@ -18,14 +18,17 @@ SET ANDROID_AAPT="%ANDROID_HOME%\build-tools\25.0.3\aapt.exe"
 REM Define aapt add command
 SET ANDROID_AAPT_ADD=%ANDROID_AAPT% add
 
+REM Define android.jar
+SET ANDROID_JAR=%ANDROID_HOME%\platforms\android-26\android.jar
+
 REM Define aapt pack and generate resources command
-SET ANDROID_AAPT_PACK=%ANDROID_AAPT% package -v -f -I "c:\Users\User\.m2\repository\com\google\android\android\4.4\android-4.4.jar"
+SET ANDROID_AAPT_PACK=%ANDROID_AAPT% package -v -f -I %ANDROID_JAR%
 
 REM Define dx
 SET ANDROID_DX="%ANDROID_HOME%\build-tools\25.0.3\dx.bat"  --dex
 
 REM Define Java compiler command
-SET JAVAC=javac.exe -source 1.7 -target 1.7 -classpath "c:\Users\User\.m2\repository\com\google\android\android\4.4\android-4.4.jar"
+SET JAVAC=javac.exe -source 1.7 -target 1.7 -classpath %ANDROID_JAR%
 SET JAVAC_BUILD=%JAVAC% -sourcepath "src;gen" -d "bin"
 
 REM Generate R class and pack resources and assets into resources.ap_ file
